@@ -1,5 +1,3 @@
-import { XMLHttpRequest } from 'xmlhttprequest'
-
 function getUrlParameter(sParam) {
     var sPageURL = window.location.search.substring(1),
         sURLVariables = sPageURL.split('&'),
@@ -16,13 +14,16 @@ function getUrlParameter(sParam) {
     return false;
 }
 
-const http = new XMLHttpRequest();
-const url = 'https://google.com';
-Http.open("GET", url);
-Http.send();
+console.log(`akack1: ${getUrlParameter('url')}`)
 
-Http.onreadystatechange = (e) => {
-  console.log(Http.responseText)
-}
+fetch('https://google.com')
+  .then(response => response.json())
+  .then(data => {
+    // Handle the response data here
+    console.log(data);
+  })
+  .catch(error => {
+    // Handle any errors that occurred during the request
+    console.error(error);
+  });
 
-console.log(`akack: ${getUrlParameter('url')}`)
